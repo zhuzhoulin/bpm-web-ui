@@ -3,7 +3,11 @@
     <div class="dashboard-text">以业绩为导向,以流程为驱动！</div>
     <el-divider />
     <el-row :gutter="20">
-      <el-col :sm="24" :lg="12" style="padding-left: 20px">
+      <el-col
+        :sm="24"
+        :lg="12"
+        style="padding-left: 20px"
+      >
         <h2>风中思絮低代码开发平台</h2>
         <p>
           由于毕业至今一直从事于企业应用相关的工作，在整个过程中有很多思考。包括低代码最早运用于bpm行业，而目前BPM行业聚合度不高，大多商用技术普遍还属于10年前水准,一直就想用技术推动BPM行业发展，做一个全新的简单的低代码开发平台。随着2020年疫情，推动了整个企业应用相关的进程，尤其突出的是重新提出的 低代码甚至零代码开发平台，在大放异彩，趁着这波热风，想给大家分享一个简单的例子。
@@ -21,7 +25,7 @@
             size="mini"
             icon="el-icon-cloudy"
             plain
-            @click="goTarget('https://gitee.com/zhuzl002')"
+            @click="goTarget('https://github.com/zhuzhoulin')"
           >访问Github</el-button>
           <el-button
             type="primary"
@@ -39,7 +43,11 @@
         </p>
       </el-col>
 
-      <el-col :sm="24" :lg="12" style="padding-left: 50px">
+      <el-col
+        :sm="24"
+        :lg="12"
+        style="padding-left: 50px"
+      >
         <el-row>
           <el-col :span="18">
             <h2>技术选型</h2>
@@ -86,9 +94,17 @@
     </el-row>
     <el-divider />
     <el-row :gutter="20">
-      <el-col :xs="24" :sm="24" :md="12" :lg="8">
+      <el-col
+        :xs="24"
+        :sm="24"
+        :md="12"
+        :lg="8"
+      >
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
+          <div
+            slot="header"
+            class="clearfix"
+          >
             <span>更新日志</span>
           </div>
           <el-collapse accordion>
@@ -111,9 +127,17 @@
           </el-collapse>
         </el-card>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="12" :lg="8">
+      <el-col
+        :xs="24"
+        :sm="24"
+        :md="12"
+        :lg="8"
+      >
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
+          <div
+            slot="header"
+            class="clearfix"
+          >
             <span>loadMap</span>
           </div>
           <div class="body">
@@ -132,9 +156,17 @@
         </el-card>
       </el-col>
 
-      <el-col :xs="24" :sm="24" :md="12" :lg="8">
+      <el-col
+        :xs="24"
+        :sm="24"
+        :md="12"
+        :lg="8"
+      >
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
+          <div
+            slot="header"
+            class="clearfix"
+          >
             <span>联系信息</span>
           </div>
           <div class="body">
@@ -157,7 +189,7 @@
               >代码生成器</el-link>
             </p>
             <p>
-              <svg-icon icon-class="qq" />  EasyBpm QQ群：
+              <svg-icon icon-class="qq" /> EasyBpm QQ群：
               <a
                 href="https://jq.qq.com/?_wv=1027&k=KIUjZD5H"
                 target="_blank"
@@ -188,23 +220,47 @@
     <el-divider />
     <el-row :gutter="20">
 
-      <el-col :xs="24" :sm="24" :md="12" :lg="12">
+      <el-col
+        :xs="24"
+        :sm="24"
+        :md="12"
+        :lg="12"
+      >
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
+          <div
+            slot="header"
+            class="clearfix"
+          >
             <span>捐赠支持</span>
           </div>
           <div class="body">
-            <img src="https://gitee.com/zhuzl002/bpm-web/raw/master/src/assets/images/20200820181716.jpg" width="48%" height="300" alt="note">
-            <img src="https://gitee.com/zhuzl002/bpm-web/raw/master/src/assets/images/20200820181724.jpg" width="48%" height="300" alt="note">
-            <span
-              style="display: inline-block; height: 30px; line-height: 30px"
-            >你可以请作者喝杯咖啡表示鼓励</span>
+            <img
+              src="https://gitee.com/zhuzl002/bpm-web/raw/master/src/assets/images/20200820181716.jpg"
+              width="48%"
+              height="300"
+              alt="note"
+            >
+            <img
+              src="https://gitee.com/zhuzl002/bpm-web/raw/master/src/assets/images/20200820181724.jpg"
+              width="48%"
+              height="300"
+              alt="note"
+            >
+            <span style="display: inline-block; height: 30px; line-height: 30px">你可以请作者喝杯咖啡表示鼓励</span>
           </div>
         </el-card>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="12" :lg="12">
+      <el-col
+        :xs="24"
+        :sm="24"
+        :md="12"
+        :lg="12"
+      >
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
+          <div
+            slot="header"
+            class="clearfix"
+          >
             <span>代码生成器演示视频</span>
           </div>
           <div class="body">
@@ -239,9 +295,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { videoPlayer } from 'vue-video-player'
-import 'video.js/dist/video-js.css'
+import { mapGetters } from "vuex";
+import { videoPlayer } from "vue-video-player";
+import "video.js/dist/video-js.css";
 // import PanelGroup from './components/PanelGroup'
 // import LineChart from './components/LineChart'
 // import { getApplyLineChart } from '@/api/apply'
@@ -268,38 +324,41 @@ import 'video.js/dist/video-js.css'
 // }
 
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   // components: { PanelGroup, LineChart },
   components: { videoPlayer },
   data() {
     return {
       // 版本号
-      version: '1.0.0',
+      version: "1.0.0",
       playerOptions: {
         playbackRates: [0.7, 1.0, 1.5, 2.0], // 播放速度
         autoplay: false, // 如果true,浏览器准备好时开始回放。
         muted: false, // 默认情况下将会消除任何音频。
         loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+        preload: "auto", // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+        language: "zh-CN",
+        aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources: [{
-          type: 'video/mp4', // 这里的种类支持很多种：基本视频格式、直播、流媒体等，具体可以参看git网址项目
-          src: 'http://120.77.218.141:9992/zzlImages/images/easybpmgGnerator.mp4' // url地址
-        }],
+        sources: [
+          {
+            type: "video/mp4", // 这里的种类支持很多种：基本视频格式、直播、流媒体等，具体可以参看git网址项目
+            src:
+              "http://120.77.218.141:9992/zzlImages/images/easybpmgGnerator.mp4", // url地址
+          },
+        ],
         hls: true,
-        poster: 'http://120.77.218.141:9992/zzlImages/images/playDemo.png', // 你的封面地址
+        poster: "http://120.77.218.141:9992/zzlImages/images/playDemo.png", // 你的封面地址
         width: document.documentElement.clientWidth, // 播放器宽度
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
+        notSupportedMessage: "此视频暂无法播放，请稍后再试", // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
           timeDivider: true, // 时间分割线
           durationDisplay: true, // 总时间
           remainingTimeDisplay: false, // 剩余播放时间
           progressControl: true, // 进度条
-          fullscreenToggle: true // 全屏按钮
-        }
-      }
+          fullscreenToggle: true, // 全屏按钮
+        },
+      },
 
       // lineChartData: lineChartData.newVisitis,
       // urls: [
@@ -311,35 +370,29 @@ export default {
       //   'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
       //   'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg'
       // ]
-    }
+    };
   },
   computed: {
-    ...mapGetters([
-      'name'
-    ]),
+    ...mapGetters(["name"]),
     player() {
-      return this.$refs.videoPlayer.player // 自定义播放
-    }
+      return this.$refs.videoPlayer.player; // 自定义播放
+    },
   },
-  created() {
-
-  },
-  mounted() {
-
-  },
+  created() {},
+  mounted() {},
   methods: {
     goTarget(href) {
-      window.open(href, '_blank')
+      window.open(href, "_blank");
     },
     // 播放回调
     onPlayerPlay(player) {
-      console.log('player play!', player)
+      console.log("player play!", player);
     },
 
     // 暂停回调
     onPlayerPause(player) {
-      console.log('player pause!', player)
-    }
+      console.log("player pause!", player);
+    },
 
     // handleSetLineChartData(type) {
     //   const _this = this
@@ -350,8 +403,8 @@ export default {
     //     _this.lineChartData = response.data
     //   })
     // }
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -365,18 +418,18 @@ export default {
   }
 }
 .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-  }
+  color: #475669;
+  font-size: 18px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
 
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
 
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
 </style>
