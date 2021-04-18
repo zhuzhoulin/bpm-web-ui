@@ -18,6 +18,10 @@ const config = {
         target: 'http://120.77.218.141:9993/',
         changeOrigin: true
       },
+      '/api/bpm': {
+        target: 'http://120.77.218.141:9993/',
+        changeOrigin: true
+      },
       '/api/code': {
         target: 'http://120.77.218.141:9999/',
         changeOrigin: true
