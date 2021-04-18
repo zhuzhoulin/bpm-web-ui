@@ -1,0 +1,6 @@
+{
+  "extends": "bpmnlint:recommended",
+  "rules": {
+    "bpmnlint/no-disconnected": "warn"
+  }
+}

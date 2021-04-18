@@ -1,0 +1,20 @@
+{
+  "name": "DataTypes Aliased",
+  "uri": "http://datatypes-aliased",
+  "prefix": "da",
+  "xml": {
+    "typePrefix": "t"
+  },
+  "types": [
+    {
+      "name": "Root",
+      "superClass": [ "dt:Root" ]
+    },
+    {
+      "name": "Rect",
+      "properties": [
+        { "name": "z", "type": "Integer", "isAttr": true }
+      ]
+    }
+  ]
+}

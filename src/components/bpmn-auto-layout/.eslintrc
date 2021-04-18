@@ -1,0 +1,6 @@
+{
+  "extends": "plugin:bpmn-io/es6",
+  "globals": {
+    "Promise": true
+  }
+}

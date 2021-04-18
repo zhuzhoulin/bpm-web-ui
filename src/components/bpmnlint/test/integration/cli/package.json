@@ -1,0 +1,19 @@
+{
+  "name": "cli-spec",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "bpmnlint": "file:../../..",
+    "bpmnlint-plugin-test": "file:../bpmnlint-plugin-test"
+  },
+  "devDependencies": {
+    "execa": "^1.0.0"
+  },
+  "localDependencies": {
+    "bpmnlint": "../../..",
+    "bpmnlint-plugin-test": "../bpmnlint-plugin-test"
+  }
+}

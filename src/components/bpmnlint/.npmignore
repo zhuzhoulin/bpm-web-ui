@@ -1,0 +1,10 @@
+.github
+.nyc_output
+coverage
+node_modules
+docs
+test
+.eslintignore
+.eslintrc
+.travis.yml
+yarn.lock

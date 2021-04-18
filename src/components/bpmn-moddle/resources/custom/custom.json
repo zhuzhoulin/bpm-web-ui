@@ -1,0 +1,74 @@
+{
+    "name": "Custom",
+    "uri": "http://zzl/schema/bpmn/custom",
+    "prefix": "custom",
+    "xml": {
+      "tagAlias": "lowerCase"
+    },
+    "types": [
+       {
+        "name": "AnalyzedNode",
+        "extends": [
+          "bpmn:FlowNode"
+        ],
+        "properties": [
+          {
+            "name": "suitable",
+            "isAttr": true,
+            "type": "Integer"
+          }
+        ]
+      },
+      {
+        "name": "triangle",
+        "extends": [
+          "bpmn:FlowNode"
+        ],
+        "properties": [
+          {
+            "name": "suitable1",
+            "isAttr": true,
+            "type": "Integer"
+          }
+        ]
+      },
+      {
+        "name": "AnalysisDetails",
+        "superClass": [ "Element" ],
+        "properties": [
+          {
+            "name": "lastChecked",
+            "isAttr": true,
+            "type": "String"
+          },
+          {
+            "name": "nextCheck",
+            "isAttr": true,
+            "type": "String"
+          },
+          {
+            "name": "comments",
+            "isMany": true,
+            "type": "Comment"
+          }
+        ]
+      },
+      {
+        "name": "Comment",
+        "properties": [
+          {
+            "name": "author",
+            "isAttr": true,
+            "type": "String"
+          },
+          {
+            "name": "text",
+            "isBody": true,
+            "type": "String"
+          }
+        ]
+      }
+    ],
+    "emumerations": [],
+    "associations": []
+  }

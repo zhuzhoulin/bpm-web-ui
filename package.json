@@ -1,0 +1,155 @@
+{
+  "name": "easy-bpm-ui",
+  "version": "1.0.1",
+  "description": "A easy bpm with form design & process design ",
+  "author": "zhoulin.zhu <786289666@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build:prod": "vue-cli-service build",
+    "build:stage": "vue-cli-service build --mode staging",
+    "preview": "node build/index.js --preview",
+    "lint": "eslint --ext .js,.vue src",
+    "test:unit": "jest --clearCache && vue-cli-service test:unit",
+    "test:ci": "npm run lint && npm run test:unit",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
+  },
+  "keywords": [
+    "vue",
+    "admin",
+    "dashboard",
+    "element-ui",
+    "bpm",
+    "bpmnjs",
+    "form",
+    "form-design",
+    "process-design",
+    "code-generator",
+    "management-system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/zhuzl002/bpm-web.git"
+  },
+  "dependencies": {
+    "@riophae/vue-treeselect": "^0.4.0",
+    "axios": "0.18.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "babel-polyfill": "^6.26.0",
+    "bpmn-auto-layout": "^0.1.0",
+    "bpmn-js": "^6.1.2",
+    "bpmn-js-token-simulation": "^0.10.0",
+    "bpmn-js-transaction-boundaries": "^0.1.1",
+    "bpmnlint": "^7.2.1",
+    "bpmnlint-loader": "^0.1.5",
+    "bpmnlint-plugin-easy-bpm": "file:./plugin",
+    "chalk": "2.4.2",
+    "clone-deep": "^4.0.1",
+    "compression-webpack-plugin": "^4.0.1",
+    "connect": "3.6.6",
+    "css-loader": "^3.6.0",
+    "csvjson-json_beautifier": "^5.0.4",
+    "diagram-js": "^6.7.0",
+    "diagram-js-direct-editing": "^1.6.1",
+    "diagram-js-minimap": "^2.0.3",
+    "echarts": "^4.8.0",
+    "element-ui": "2.13.0",
+    "eslint": "5.15.3",
+    "eslint-plugin-bpmn-io": "^0.10.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "5.2.2",
+    "fuse.js": "^6.4.6",
+    "html-webpack-plugin": "3.2.0",
+    "ids": "^1.0.0",
+    "js-cookie": "2.2.0",
+    "less": "^3.12.2",
+    "less-loader": "^4.1.0",
+    "lib-flexible": "^0.3.2",
+    "mockjs": "1.0.1-beta3",
+    "moddle": "^5.0.1",
+    "moment": "^2.24.0",
+    "node-sass": "^4.14.1",
+    "normalize.css": "7.0.0",
+    "nprogress": "0.2.0",
+    "path-to-regexp": "2.4.0",
+    "prettier": "^1.18.2",
+    "runjs": "^4.3.2",
+    "sass": "^1.26.10",
+    "sass-loader": "^7.3.1",
+    "saxen": "^8.1.0",
+    "screenfull": "^4.2.1",
+    "script-ext-html-webpack-plugin": "2.1.3",
+    "script-loader": "0.7.2",
+    "serve-static": "^1.13.2",
+    "sortablejs": "1.10.1",
+    "style-loader": "^1.2.1",
+    "stylus-loader": "^3.0.2",
+    "svg-sprite-loader": "4.1.3",
+    "svgo": "1.2.2",
+    "transform-runtime": "0.0.0",
+    "v-jsoneditor": "^1.2.1",
+    "vkbeautify": "^0.99.3",
+    "vue": "2.6.10",
+    "vue-codemirror": "^4.0.6",
+    "vue-codemirror-lite": "^1.0.4",
+    "vue-esign": "^1.0.5",
+    "vue-i18n": "^8.21.0",
+    "vue-quill-editor": "^3.0.6",
+    "vue-router": "3.0.6",
+    "vue-template-compiler": "2.6.10",
+    "vue-video-player": "^5.0.2",
+    "vuedraggable": "^2.24.0",
+    "vuex": "3.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.0.0",
+    "@babel/register": "7.0.0",
+    "@dagrejs/graphlib": "^2.1.4",
+    "@vue/cli-plugin-babel": "3.6.0",
+    "@vue/cli-plugin-eslint": "^3.9.1",
+    "@vue/cli-plugin-unit-jest": "3.6.3",
+    "@vue/cli-service": "3.6.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/test-utils": "1.0.0-beta.29"
+  },
+  "engines": {
+    "node": ">=8.9",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": "off",
+      "no-debugger": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {
+        "overrideBrowserslist": [
+          "Android 4.1",
+          "iOS 7.1",
+          "Chrome > 31",
+          "ff > 31",
+          "ie >= 8"
+        ]
+      }
+    }
+  }
+}

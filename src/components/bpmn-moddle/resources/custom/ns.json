@@ -1,0 +1,8 @@
+{
+    "name": "ns",
+    "uri": "http://zzl/schema/bpmn/ns",
+    "prefix": "ns",
+    "xml": {
+      "tagAlias": "lowerCase"
+    }
+}

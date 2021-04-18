@@ -1,0 +1,35 @@
+{
+  "name": "bpmn-auto-layout",
+  "version": "0.1.0",
+  "description": "Layout BPMN diagrams, generating missing DI information",
+  "main": "index.js",
+  "scripts": {
+    "all": "run-s lint test",
+    "lint": "eslint .",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpmn-io/bpmn-auto-layout.git"
+  },
+  "keywords": [
+    "bpmn",
+    "layout"
+  ],
+  "author": "hoferch91",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bpmn-io/bpmn-auto-layout/issues"
+  },
+  "homepage": "https://github.com/bpmn-io/bpmn-auto-layout#readme",
+  "dependencies": {
+    "bpmn-moddle": "^6.0.0",
+    "min-dash": "^3.5.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-plugin-bpmn-io": "^0.10.0",
+    "mocha": "^6.2.2",
+    "npm-run-all": "^4.1.5"
+  }
+}
