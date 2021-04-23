@@ -36,6 +36,8 @@ export default {
       handler(newValue, oldValue) {
         this.show = false
         this.route = newValue
+        console.log(JSON.parse(newValue))
+
         const meta = JSON.parse(this.route.meta.meta)
         this.processKey = meta.processKey
         this.show = true
@@ -44,8 +46,9 @@ export default {
     }
   },
   mounted() {
+    console.log(this.route)
     const meta = JSON.parse(this.route.meta.meta)
-    console.log(meta)
+
     this.processKey = meta.processKey
     this.show = true
   },

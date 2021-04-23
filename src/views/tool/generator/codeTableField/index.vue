@@ -1524,10 +1524,10 @@ export default {
           const id = row.columnId
           deleteById(id).then((response) => {
             if (response.code === 200) {
-              this.getList()
-              this.$message.success(response.message)
+              _this.getList()
+              _this.$message.success(response.message)
             } else {
-              this.$message.error(response.message)
+              _this.$message.error(response.message)
             }
           })
         })

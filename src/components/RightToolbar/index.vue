@@ -97,19 +97,19 @@
 </template>
 <script>
 export default {
-  name: 'RightToolbar',
+  name: "RightToolbar",
   props: {
     showSearch: {
       type: Boolean,
-      default: true
+      default: true,
     },
     columns: {
-      type: Array
+      type: Array,
     },
     defaultHideColumns: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data() {
     return {
@@ -117,48 +117,47 @@ export default {
       // 显隐数据
       value: [],
       // 弹出层标题
-      title: '显示/隐藏',
+      title: "显示/隐藏",
       // 是否显示弹出层
-      open: false
-    }
+      open: false,
+    };
   },
   created() {
     // 设置默认不展示值
-    const _that = this
-    let temp = []
-    temp = _that.defaultHideColumns
-    _that.value = temp
-    _that.handleCheckedChange(_that.value)
+    const _that = this;
+    let temp = [];
+    temp = _that.defaultHideColumns;
+    _that.value = temp;
+    _that.handleCheckedChange(_that.value);
   },
   methods: {
     // 搜索
     toggleSearch() {
-      this.$emit('update:showSearch', !this.showSearch)
+      this.$emit("update:showSearch", !this.showSearch);
     },
     // 刷新
     refresh() {
-      this.$emit('queryTable')
+      this.$emit("queryTable");
     },
     // 右侧列表元素变化
     dataChange(data) {
       for (var item in this.columns) {
-        const key = this.columns[item].value
-        this.columns[item].visible = !data.includes(key)
+        const key = this.columns[item].value;
+        this.columns[item].visible = !data.includes(key);
       }
     },
     handleCheckedChange(data) {
-      console.log(data)
       for (var item in this.columns) {
-        const key = this.columns[item].value
-        this.columns[item].visible = !data.includes(key)
+        const key = this.columns[item].value;
+        this.columns[item].visible = !data.includes(key);
       }
     },
     // 打开显隐列dialog
     showColumn() {
-      this.open = true
-    }
-  }
-}
+      this.open = true;
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 ::v-deep .el-transfer__button {

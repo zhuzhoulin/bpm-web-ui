@@ -12,6 +12,7 @@ export function addDynamicMenuRoutes(menus) {
 
   menus.forEach((item) => {
     const path = item.menuUrl
+
     const id = item.menuId
     const code = item.menuCode
     const name = item.menuName
@@ -30,6 +31,7 @@ export function addDynamicMenuRoutes(menus) {
       name: name,
       path: path,
       hidden: hidden,
+      params: meta,
       // alwaysShow: alwaysShow,
       meta: {
         id: id,
@@ -56,12 +58,14 @@ export function addDynamicMenuRoutes(menus) {
     if (componentPath !== 'Layout') {
       let subView = componentPath
       subView = subView.replace(/^\/*/g, '')
-      console.log('subView:' + subView)
+
       route.component = resolve => require([`@/views/${subView}`], resolve)
     }
     if (children && children.length > 0) {
       route.children = addDynamicMenuRoutes(children)
     }
+
+    console.log(route)
     routers.push(route)
   })
   return routers

@@ -99,6 +99,7 @@ export default {
         formData: this.form.formData,
         formKey: this.form.formKey,
         tenantId: this.form.tenantId,
+        formId: this.form.formId,
       };
       updateForm(postData).then((response) => {
         that.$message.success("保存成功!");
