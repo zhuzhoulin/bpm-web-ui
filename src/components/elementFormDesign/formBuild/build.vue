@@ -2,7 +2,7 @@
   <div>
 
     <div style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden">
-      {{ formOptions.config }}
+
       <el-form
         ref="buildForm"
         :label-width="formOptions.config.autoLabelWidth ? 'auto': formOptions.config.labelWidth+'%'"
