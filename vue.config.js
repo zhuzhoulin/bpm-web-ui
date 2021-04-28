@@ -8,7 +8,6 @@ const productionGzipExtensions = ['js', 'css']
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-
 const name = defaultSettings.title || 'Easy Bpm' // page title
 
 // If your port is set to 80,
@@ -18,6 +17,7 @@ const name = defaultSettings.title || 'Easy Bpm' // page title
 // port = 9528 npm run dev OR npm run dev --port = 9528
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const config = require(`./config/${NODE_ENV}`)
+const webpack = require('webpack')
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -39,6 +39,13 @@ module.exports = {
     // it can be accessed in index.html to inject the correct title.
     config.name = name
     config.resolve.alias['@'] = resolve('src')
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'windows.jQuery': 'jquery'
+      })
+    )
     config.performance = {
       hints: 'warning',
       // 入口起点的最大体积 整数类型（以字节为单位）

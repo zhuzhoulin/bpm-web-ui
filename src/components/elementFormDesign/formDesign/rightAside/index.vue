@@ -16,6 +16,9 @@
     <el-form-item label="label自适应宽度">
       <el-switch v-model="layoutData.autoLabelWidth" active-text="是" inactive-text="否" />
     </el-form-item>
+    <el-form-item label="行内表单">
+      <el-switch v-model="layoutData.inline" active-text="是" inactive-text="否" />
+    </el-form-item>
 
     <el-divider v-if="(layoutData.labelPosition==='right'|| layoutData.labelPosition==='left') && !layoutData.autoLabelWidth" />
     <el-form-item v-if="(layoutData.labelPosition==='right'|| layoutData.labelPosition==='left') && !layoutData.autoLabelWidth" label="label宽度(%)">

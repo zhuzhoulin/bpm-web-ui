@@ -99,7 +99,6 @@ export default {
           break
       }
 
-      console.log(this.bpmnModeler._definitions)
       var bpmnName =
         this.bpmnModeler._definitions.rootElements[0].id ||
         this.bpmnModeler._definitions.rootElements[0].name
@@ -247,7 +246,6 @@ export default {
 
     // 流程图放大缩小
     handleZoom(radio) {
-      console.log('handleZoom () ')
       const newScale = !radio
         ? 1.0 // 不输入radio则还原
         : this.state.scale + radio <= 0.2 // 最小缩小倍数
@@ -341,6 +339,7 @@ export default {
       }).catch(e => e)
     },
     autuLayout() {
+      console.log(this.bpmnModeler)
       this.getProcessDiagramXML()
       /*  const alignToOrigin = this.bpmnModeler.get('alignToOrigin')
       console.log('alignToOrigin:' + alignToOrigin)

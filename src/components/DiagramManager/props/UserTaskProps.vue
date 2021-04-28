@@ -426,6 +426,10 @@ export default {
           label: '0%'
         },
         {
+          value: '1',
+          label: '1%'
+        },
+        {
           value: '10',
           label: '10%'
         },

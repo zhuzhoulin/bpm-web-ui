@@ -256,7 +256,7 @@
           <el-table-column
             align="center"
             label="操作"
-            fixed="right"
+
             min-width="550px"
           >
             <template slot-scope="scope">
@@ -1053,6 +1053,7 @@ export default {
   },
   methods: {
     closeProcessVersionDialog() {
+      this.getList()
       this.processVersionDialog.visible = false
     },
     showProcessVersionDialog(row) {
@@ -1075,17 +1076,18 @@ export default {
           }
           publish(postData).then((response) => {
             this.$message.success('发布成功！')
+            this.getList()
           })
         })
       })
     },
     closeDiagramDialog() {
       this.$nextTick(() => {
+        this.getList()
         this.editDiagramDialog.visible = false
       })
     },
     showEditDiagramDialog(row) {
-      console.log(row)
       getProcessDetailById(row.processDetailId).then((response) => {
         this.$nextTick(() => {
           this.processXml = response.data.processXml || ''

@@ -11,17 +11,17 @@
 </template>
 
 <script>
-import { updateForm } from "@/api/form/form";
-import deepClone from "clone-deep";
+import { updateForm } from '@/api/form/form'
+import deepClone from 'clone-deep'
 
 export default {
-  name: "BpmFormDesign",
+  name: 'BpmFormDesign',
   props: {
     formInfo: {
       type: Object,
       require: true,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {
@@ -31,34 +31,34 @@ export default {
         formName: null,
         remarks: null,
         tenantId: null,
-        formData: null,
+        formData: null
       },
 
       defaultValue: {
         config: {
-          labelPosition: "left",
+          labelPosition: 'left',
           labelWidth: 15,
-          autoLabelWidth: false, // 子表单有问题
+          autoLabelWidth: false // 子表单有问题
         },
-        list: [],
-      },
-    };
+        list: []
+      }
+    }
   },
   computed: {},
   watch: {
     formInfo: {
       handler(newValue, oldValue) {
-        this.form = deepClone(newValue);
-        this.setDesignData(this.form);
+        this.form = deepClone(newValue)
+        this.setDesignData(this.form)
         // 渲染JSON
         // this.$refs.bpm.setDesignData(this.form.formData)
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   mounted() {
-    console.log("design ---mounted --- ");
-    this.setDesignData(this.formInfo);
+    console.log('design ---mounted --- ')
+    this.setDesignData(this.formInfo)
     // this.form = deepClone(this.formInfo)
     // console.log('form --- ' + JSON.stringify(this.form))
 
@@ -71,79 +71,79 @@ export default {
     // }
   },
   created() {
-    console.log("design ---start --- ");
+    console.log('design ---start --- ')
   },
   methods: {
     setDesignData(formInfo) {
-      this.form = deepClone(this.formInfo);
+      this.form = deepClone(this.formInfo)
       if (this.form && this.form.formData) {
         this.$nextTick(() => {
-          this.$refs.bpm.setDesignData(JSON.parse(this.formInfo.formData));
-        });
+          this.$refs.bpm.setDesignData(JSON.parse(this.formInfo.formData))
+        })
       } else {
-        this.$refs.bpm.setDesignData(this.defaultValue);
+        this.$refs.bpm.setDesignData(this.defaultValue)
       }
     },
     deleteAll() {
-      this.data.list = [];
+      this.data.list = []
     },
     handleSave(value) {
-      const that = this;
+      const that = this
 
-      const formData = deepClone(value);
-      const dynamicKeyList = this.getDynamicKeyList(value);
-      formData.dynamicKeyList = dynamicKeyList;
+      const formData = deepClone(value)
+      const dynamicKeyList = this.getDynamicKeyList(value)
+      formData.dynamicKeyList = dynamicKeyList
 
-      that.form.formData = JSON.stringify(formData);
+      that.form.formData = JSON.stringify(formData)
       const postData = {
         formData: this.form.formData,
         formKey: this.form.formKey,
         tenantId: this.form.tenantId,
-        formId: this.form.formId,
-      };
+        formId: this.form.formId
+      }
       updateForm(postData).then((response) => {
-        that.$message.success("保存成功!");
+        that.$message.success('保存成功!')
         // that.$nextTick(() => {
         //   // that.loading = false
         // })
         // that.handleReset()
         // that.$emit('closeFormDesignDialog')
         // that.$emit('queryList')
-      });
+      })
     },
     handleReset() {
-      const that = this;
-      that.$refs.bpm.deleteAll();
+      const that = this
+      that.$refs.bpm.deleteAll()
       // that.$refs.bpm.data.list = []
     },
     handleClose() {
-      console.log("handleClose");
+      console.log('handleClose')
 
-      const that = this;
-      that.$refs.bpm.handleClose();
+      const that = this
+      that.$refs.bpm.handleClose()
     },
     getDynamicKeyList(data) {
-      var dynamicKeyList = [];
-      if (data === null || data === undefined || data === "") {
-        return dynamicKeyList;
+      var dynamicKeyList = []
+      if (data === null || data === undefined || data === '') {
+        return dynamicKeyList
       }
       data.list.forEach((item, i) => {
         if (
-          item.type === "select" ||
-          item.type === "checkbox" ||
-          item.type === "cascader" ||
-          item.type === "tree" ||
-          item.type === "radio"
+          item.type === 'select' ||
+          item.type === 'checkbox' ||
+          item.type === 'cascader' ||
+          item.type === 'tree' ||
+          item.type === 'radio'
         ) {
-          if (item.options.dynamic && item.options.dynamicKey !== "") {
-            dynamicKeyList.push(item.options.dynamicKey);
+          if (item.options.dynamic && item.options.dynamicKey !== '') {
+            dynamicKeyList.push(item.options.dynamicKey)
           }
         }
-      });
-      return dynamicKeyList;
-    },
-  },
-};
+      })
+      return dynamicKeyList
+    }
+  }
+}
 </script>
 
 <style scoped>

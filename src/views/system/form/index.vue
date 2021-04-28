@@ -222,7 +222,7 @@
           <el-table-column
             align="center"
             label="操作"
-            fixed="right"
+
             min-width="450px"
           >
             <template slot-scope="scope">
@@ -889,11 +889,14 @@ export default {
     },
     closeFormDesignDialog() {
       this.$nextTick(() => {
+        this.getList()
         this.formDesignDialog.visible = false
       })
     },
     closePreViewDialog() {
-      this.formPreViewDialog.visible = false
+      this.$nextTick(() => {
+        this.formPreViewDialog.visible = false
+      })
     },
     handlePreview(row) {
       // 打开预览模态框

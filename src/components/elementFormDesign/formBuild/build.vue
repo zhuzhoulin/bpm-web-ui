@@ -1,9 +1,13 @@
 <template>
   <div>
+
     <div style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden">
+      {{ formOptions.config }}
       <el-form
         ref="buildForm"
-
+        :label-width="formOptions.config.autoLabelWidth ? 'auto': formOptions.config.labelWidth+'%'"
+        :inline="formOptions.config.inline"
+        size="small"
         :model="formData"
         :label-position="formOptions.config.labelPosition"
         class="finalForm"
@@ -74,6 +78,7 @@ export default {
       handler(newValue) {
         // 当传入数据改变时,formDesign会基于传入数据的克隆副本做一系列改变,formDesign的数据流是单向的,不管传入的是引用类型还是普通类型
         this.formOptions = JSON.parse(JSON.stringify(newValue))
+        console.log('@@@@@@@@@@@@2:' + this.formOptions)
         this.formDataMap()
         this.rulesMap()
       },

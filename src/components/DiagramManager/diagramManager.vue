@@ -452,8 +452,34 @@ export default {
   height: 100%;
   min-height: 600px;
   border: 1px solid  #cccccc;
-  background: url('../../assets/diagram_images/bg.svg') #fff;
+  //background: url('../../assets/diagram_images/bg.svg') #fff;
+  background: white;
+  overflow: auto;
+  background-image: linear-gradient(
+      90deg,
+      rgba(220, 220, 220, 0.5) 6%,
+      transparent 0
+    ),
+    linear-gradient(rgba(192, 192, 192, 0.5) 6%, transparent 0);
+  background-size: 12px 12px;
+  width: 100%;
+  height: calc(100vh - 82px);
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
+// .containers {
+//   background: white;
+//   overflow: auto;
+//   background-image: linear-gradient(
+//       90deg,
+//       rgba(220, 220, 220, 0.5) 6%,
+//       transparent 0
+//     ),
+//     linear-gradient(rgba(192, 192, 192, 0.5) 6%, transparent 0);
+//   background-size: 12px 12px;
+//   width: 100%;
+//   height: calc(100vh - 82px);
+//   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+// }
 
 a:link {
   text-decoration: none;

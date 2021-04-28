@@ -15,6 +15,8 @@ ElementCompantMap[ElementType.sequenceFlow] = 'SequenceFlowProps'
 ElementCompantMap[ElementType.userTask] = 'UserTaskProps'
 ElementCompantMap[ElementType.callActivity] = 'CallActivityProps'
 
+ElementCompantMap[ElementType.scriptTask] = 'ScriptTaskProps'
+
 // 只读设计器
 ElementCompantMap[ElementType.startEventReadonly] = 'StartEventPropsReadonly'
 ElementCompantMap[ElementType.endEventReadonly] = 'EndEventPropsReadonly'

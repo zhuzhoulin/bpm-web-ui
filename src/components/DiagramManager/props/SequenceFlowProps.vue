@@ -115,7 +115,6 @@ import { is } from 'bpmn-js/lib/util/ModelUtil'
 import AdjacencyMatrixGraph from '../js/util/AdjacencyMatrixGraph'
 import { OperatorAllOptions, LogicOptions, wfResult, OperatorLessOptions } from '../js/static'
 import { isBlank } from '../js/util/CommonUtils'
-import AdapterComponent from '../assistComponents/AdapterComponent.vue'
 import { IntAttri } from '../js/static'
 
 const eventDefinitionHelper = require('../js/helper/EventDefinitionHelper')
@@ -134,7 +133,7 @@ const DEFAULT_VALUE = {
   logicLabel: '无'
 }
 export default {
-  components: { AdapterComponent },
+  components: { },
   props: ['element'],
   inject: ['bpmnModeler'],
   data() {

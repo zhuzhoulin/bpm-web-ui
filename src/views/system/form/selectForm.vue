@@ -170,110 +170,110 @@
 </template>
 
 <script>
-import store from "@/store";
-import { generateTitle } from "@/utils/i18n";
-import Pagination from "@/components/Pagination";
-import { getFormListPage } from "@/api/system/form";
-import PreFormView from "@/components/PreFormView";
+import store from '@/store'
+import { generateTitle } from '@/utils/i18n'
+import Pagination from '@/components/Pagination'
+import { getFormListPage } from '@/api/system/form'
+import PreFormView from '@/components/PreFormView'
 
 export default {
-  name: "SelectForm",
+  name: 'SelectForm',
   components: { Pagination, PreFormView },
   filters: {
     statusFilter(status) {
       const statusMap = {
-        1: "success",
-        0: "info",
-      };
-      return statusMap[status];
-    },
+        1: 'success',
+        0: 'info'
+      }
+      return statusMap[status]
+    }
   },
   data() {
     return {
       searchObject: {
-        formKey: "",
-        formName: "",
+        formKey: '',
+        formName: '',
         status: null,
         tenantId: store.getters.tenantId,
         pageIndex: 1,
-        pageSize: 10,
+        pageSize: 10
       },
       paginationObj: {
         pageSize: 1,
-        rowCount: 10,
+        rowCount: 10
       },
       statusList: [
         {
-          label: "有效",
-          value: 1,
+          label: '有效',
+          value: 1
         },
         {
-          label: "失效",
-          value: 0,
-        },
+          label: '失效',
+          value: 0
+        }
       ],
-      statusMap: { 1: "有效", 0: "失效" },
-      formTypeMap: { 1: "PC", 2: "mobile" },
+      statusMap: { 1: '有效', 0: '失效' },
+      formTypeMap: { 1: 'PC', 2: 'mobile' },
 
       list: [],
       listLoading: true,
       total: 0,
       previewOptions: {
-        width: 850,
+        width: 850
       },
       formPreViewDialog: {
-        title: "预览",
+        title: '预览',
         visible: false,
-        width: "",
-        name: "预览", // 组件名,
+        width: '',
+        name: '预览', // 组件名,
         loading: false,
         fullscreen: false,
-        closeOnPressEscape: false,
-      },
-    };
+        closeOnPressEscape: false
+      }
+    }
   },
   created() {
     this.searchObject = {
-      formKey: "",
-      formName: "",
+      formKey: '',
+      formName: '',
       status: null,
       tenantId: store.getters.tenantId,
       pageIndex: 1,
-      pageSize: 10,
-    };
-    this.queryList();
+      pageSize: 10
+    }
+    this.queryList()
   },
   mounted() {},
   methods: {
     handleSelectForm(row) {
-      this.$emit("setForm", row.formKey, row.formName);
+      this.$emit('setForm', row.formKey, row.formName)
     },
     closePreViewDialog() {
       this.$nextTick(() => {
-        this.formPreViewDialog.visible = false;
-      });
+        this.formPreViewDialog.visible = false
+      })
     },
     handlePreview(row) {
       // 打开预览模态框
-      this.formPreViewDialog.data = row;
+      this.formPreViewDialog.data = row
       this.$nextTick(() => {
-        this.formPreViewDialog.visible = true;
-      });
+        this.formPreViewDialog.visible = true
+      })
     },
     generateTitle,
     queryList() {
-      this.listLoading = true;
-      var param = this.searchObject;
+      this.listLoading = true
+      var param = this.searchObject
       getFormListPage(param).then((response) => {
-        this.list = response.data.list;
-        this.total = response.data.total;
+        this.list = response.data.list
+        this.total = response.data.total
         this.$nextTick(() => {
-          this.listLoading = false;
-        });
-      });
-    },
-  },
-};
+          this.listLoading = false
+        })
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -297,7 +297,7 @@ export default {
   display: flex;
   margin-bottom: 32px;
   padding: 20px 20px 0;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 18px;
   text-align: center;
 }

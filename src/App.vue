@@ -11,6 +11,19 @@
 .filter >>> .el-form-item__label{
   width: auto!important;
 }
+.el-table--scrollable-x .el-table__body-wrapper {
+  z-index : 1;
+}
+.el-table .el-table__fixed {
+
+      height: auto !important;
+      bottom: 18px;
+}
+.el-table    .el-table__fixed-right {
+      height: auto !important;
+      bottom: 18px;
+    }
+
 /** 移动端适配 */
 
 html {
@@ -71,13 +84,18 @@ div {
   }
   .el-message { min-width: 300px !important; }
 
+}
+
   body .el-table th.gutter {
+   display: table-cell !important;
+  }
+
+  body .el-table colgroup.gutter {
    display: table-cell !important;
   }
 
   .el-table--border th.gutter:last-of-type {
    display: block !important;
   }
-}
 
 </style>

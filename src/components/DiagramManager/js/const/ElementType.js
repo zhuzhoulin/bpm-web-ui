@@ -18,6 +18,10 @@ const ELEMETN_TYPE = {
 
   userTask: BPMN_PREFIX + 'UserTask',
   callActivity: BPMN_PREFIX + 'CallActivity',
+
+  // 20210428 新增
+  scriptTask: BPMN_PREFIX + 'ScriptTask',
+
   // 以下为activti的拓展元素
   listener: CUSTOM_PROFIX + 'Listener',
 

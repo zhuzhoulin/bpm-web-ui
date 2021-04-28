@@ -65,7 +65,6 @@ export function addDynamicMenuRoutes(menus) {
       route.children = addDynamicMenuRoutes(children)
     }
 
-    console.log(route)
     routers.push(route)
   })
   return routers

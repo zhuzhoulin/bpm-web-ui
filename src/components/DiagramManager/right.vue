@@ -143,7 +143,8 @@ import InclusiveGatewayProps from './props/InclusiveGatewayProps.vue'
 import UserTaskProps from './props/UserTaskProps.vue'
 import SequenceFlowProps from './props/SequenceFlowProps.vue'
 import CallActivityProps from './props/CallActivityProps.vue'
-
+import ScriptTaskProps from './props/ScriptTaskProps.vue'
+import TemplateProps from './props/TemplateProps.vue'
 export default {
   name: 'DesignRight',
   components: {
@@ -157,7 +158,9 @@ export default {
     InclusiveGatewayProps,
     UserTaskProps,
     SequenceFlowProps,
-    CallActivityProps
+    CallActivityProps,
+    ScriptTaskProps,
+    TemplateProps
   },
   provide: function() {
     return {
@@ -218,16 +221,8 @@ export default {
     }
   },
   watch: {
-    // element: {
-    //   handler(newValue, oldValue) {
-    //     console.log(':watch element:' + newValue)
-    //     if (oldValue !== newValue) { this.element = deepClone(newValue) }
-    //   },
-    //   deep: true
-    // },
     processInfo: {
       handler(newValue, oldValue) {
-        // console.log('newValue:' + JSON.stringify(newValue))
         this.process = deepClone(newValue)
       },
       deep: true
@@ -341,8 +336,6 @@ export default {
         eventBus.on(eventType, function(e) {
           // that.bpmnModeler.get('comments').collapseAll()
           // that.bpmnModeler.get('comments').toggleCollapse(that.element)
-
-          console.log(':handleModeler eventType:' + eventType)
           if (eventType === 'element.changed') {
             that.elementChanged(e)
           } else if (eventType === 'selection.changed') {
@@ -350,16 +343,21 @@ export default {
             if (!element || element === undefined) return
             that.element = element
           } else if (eventType === 'element.click') {
-            console.log('点击了element: ' + e.element.type)
             if (!e || e.element.type === 'bpmn:Process') {
-            // if (!e) {
+              console.log('e.element.type:' + e.element.type)
               that.key = '1'
               that.propsComponent = 'CommonProps'
               that.element = e.element
             } else {
+              console.log('ssssssssssssssssssssssssss ')
               // 展示新增图形的属性
               that.key = e.element.id
               that.propsComponent = bpmnHelper.getComponentByEleType(e.element.type)
+
+              if (!that.propsComponent) {
+                that.propsComponent = 'TemplateProps'
+              }
+              console.log(that.propsComponent)
               that.element = e.element
             }
           }
@@ -409,7 +407,6 @@ export default {
       return elementRegistry.get(id)
     },
     setDefaultProperties() {
-      console.log('setDefaultProperties')
       const that = this
       const { element } = that
       if (element) {

@@ -81,49 +81,11 @@ export default {
     if (definition) {
       this.targetNamespace = definition.targetNamespace
     }
-
-    // this.$emit('updateProperties', { commonProperties: { id: modelId, name: modelInfo.name }})
   },
   methods: {
 
     updateProperties(property, value) {
       bpmnHelper.updateDocumentation(this.bpmnModeler(), this.element, value)
-      //   const data = {}
-      //   data[property] = value
-
-      //   const bpmnModeler = this.bpmnModeler()
-
-      //   // const canvas = bpmnModeler.get('canvas')
-      //   const oldRoot = bpmnModeler._definitions.rootElements[0]
-
-    //   if (!oldRoot) return
-    //   //   var businessObject = oldRoot.businessObject
-    //   //   if (property === 'documentation') {
-    //   //     /* 更新备注 */
-    //   //     var comments = businessObject.$model.create('bpmn:Documentation', {
-    //   //       text: value
-    //   //     })
-    //   //     businessObject[property] = [comments]
-    //   //   } else if (businessObject.hasOwnProperty(property)) {
-    //   //     businessObject[property] = value
-    //   //   } else {
-    //   //     businessObject[property] = value
-    //   //   }
-    //   //   /* 先清空旧节点 */
-    //   //   canvas.setRootElement(null, true)
-    //   //   /* 设置新节点 */
-    //   //   canvas.setRootElement(oldRoot, true)
-    //   // const modeling = bpmnModeler.get('modeling')
-    //   if (property === 'documentation') {
-    //     var comments = oldRoot.$model.create('bpmn:Documentation', {
-    //       text: value
-    //     })
-    //     data[property] = [comments]
-    //   }
-    //   const modeling = bpmnModeler.get('modeling')
-    //   console.log('updateProperties data:' + JSON.stringify(data))
-    //   modeling.updateProperties(this.element, data)
-    //   console.log('bpmnModeler:' + bpmnModeler)
     }
   }
 }

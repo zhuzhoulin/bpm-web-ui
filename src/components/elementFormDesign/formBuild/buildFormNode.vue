@@ -101,12 +101,13 @@
     <!--    子表-->
 
     <template v-else-if="item.type === 'childTable' || item.type === 'childTablePage'">
+      <!-- :label-width="isLabel? '0px': layout.labelWidth+'%'" -->
 
       <el-form-item
         :prop="item.model"
         :label="item.options.hidden||isLabel?'':item.label"
         :required="item.rules?item.rules[0].required:false"
-        :label-width="isLabel? '0px': layout.labelWidth+'%'"
+        :label-width="isLabel? '0px': (layout.autoLabelWidth ? 'auto' : layout.labelWidth+'%')"
         :style="item.type==='tMKeditor'?'overflow:hidden':''"
       >
 
@@ -534,11 +535,14 @@
         :label-width="item.type==='tMKeditor'||isLabel?'0px':layout.labelWidth+'%'"
         :style="item.type==='tMKeditor'?'overflow:hidden':''"
       > -->
+      <!-- :label-width="isLabel? '0px': (layout.autoLabelWidth ? 'auto' : layout.labelWidth+'%')" -->
+      <!-- :label-width="isLabel? '0px': layout.labelWidth+'%'" -->
       <el-form-item
         :prop="item.model"
         :label="item.options.hidden||isLabel?'':item.label"
         :required="item.rules?item.rules[0].required:false"
-        :label-width="isLabel? '0px': layout.labelWidth+'%'"
+        :label-width="isLabel? '0px': (layout.autoLabelWidth ? 'auto' : layout.labelWidth+'%')"
+
         :style="item.type==='tMKeditor'?'overflow:hidden':''"
       >
         <el-rate
