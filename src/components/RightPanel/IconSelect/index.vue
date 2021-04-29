@@ -45,7 +45,7 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
   .icon-body {
     width: 100%;
-    padding: 10px;
+    // padding: 10px;
     .icon-list {
       height: 200px;
       overflow-y: scroll;

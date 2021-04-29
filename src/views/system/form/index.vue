@@ -333,6 +333,7 @@
             <el-input
               v-model="form.tenantId"
               placeholder="请输入租户编号 "
+              disabled
             />
           </el-form-item>
           <el-form-item
@@ -374,6 +375,7 @@
               type="textarea"
               autosize
               placeholder="请输入表单数据 "
+              disabled
             />
           </el-form-item>
           <el-form-item
@@ -553,6 +555,7 @@
               v-model="updateForm.formData"
               type="textarea"
               autosize
+              disabled
               placeholder="请输入表单数据 "
             />
           </el-form-item>

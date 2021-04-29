@@ -81,7 +81,6 @@ export default {
       this.$emit('close')
     },
     getReturnNode() {
-      console.log('1111111111111')
       const param = this.taskId
       getReturnNode(param).then(response => {
         this.$nextTick(() => {

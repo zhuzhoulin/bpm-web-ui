@@ -97,8 +97,9 @@ export default {
             labelPosition: 'left',
             labelWidth: 15,
             autoLabelWidth: true, // 子表单有问题
-            inline: false
-            // customWidth: ""
+            inline: false,
+            size: 'default',
+            customWidth: ''
           },
           list: []
         }
@@ -190,11 +191,12 @@ export default {
       selectType: '',
       data: {
         config: {
-          labelPosition: 'top',
+          labelPosition: 'left',
           labelWidth: 15,
           customWidth: '',
           autoLabelWidth: false, // 子表单有问题
-          inline: false
+          inline: false,
+          size: 'default'
         },
         list: []
       }
@@ -257,7 +259,6 @@ export default {
     },
     save() {
       // 保存按钮,传出formDesign中的data克隆副本
-      console.log('#####################################')
       this.$emit('save', JSON.parse(JSON.stringify(this.data)))
     },
     importJson(json) {

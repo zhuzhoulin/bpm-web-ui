@@ -56,6 +56,7 @@
                       :key="r.key"
                       :item="r"
                       :i="i"
+                      :data-list="data"
                       :layout="layout"
                       :select-item="selectItem"
                       :select-type="selectType"
@@ -107,6 +108,7 @@
                     :key="r.key"
                     :item="r"
                     :i="i"
+                    :data-list="data"
                     :layout="layout"
                     :select-item="selectItem"
                     :select-type="selectType"
@@ -152,6 +154,7 @@
                     :key="r.key"
                     :item="r"
                     :i="i"
+                    :data-list="data"
                     :layout="layout"
                     :select-item="selectItem"
                     :select-type="selectType"
@@ -194,6 +197,8 @@
                     :key="r.key"
                     :item="r"
                     :i="i"
+                    :data-list="data"
+
                     :layout="layout"
                     :select-item="selectItem"
                     :select-type="selectType"
@@ -234,6 +239,7 @@
                   :key="r.key"
                   :item="r"
                   :i="i"
+                  :data-list="data"
                   :layout="layout"
                   :select-type="selectType"
                   :select-item="selectItem"
@@ -274,6 +280,7 @@
                   :key="r.key"
                   :item="r"
                   :i="i"
+                  :data-list="data"
                   :layout="layout"
                   :select-type="selectType"
                   :select-item="selectItem"
@@ -293,6 +300,7 @@
         <FormNode
           :item="item"
           :layout="layout"
+          :data-list="data"
         />
       </template>
       <el-button
@@ -340,6 +348,10 @@ export default {
       type: Object,
       required: true
     },
+    dataList: {
+      type: Array,
+      required: true
+    },
     i: {
       type: Number,
       required: true
@@ -355,12 +367,20 @@ export default {
     return {
       tableHandleShow: false,
       left: 0,
-      top: 0
+      top: 0,
+      data: this.dataList
     }
   },
   computed: {
     unInterFlow() {
       return this.childTableBans.includes(this.selectType)
+    }
+  },
+  watch: {
+    dataList: {
+      handler(newValue, oldValue) {
+        this.data = this.dataList
+      }
     }
   },
   methods: {

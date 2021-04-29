@@ -5,11 +5,12 @@
 
     <!-- beforeDestroy hook: "Error: [ElementForm]unpected width " -->
     <!-- :label-width="isLabel? '0px': (layout.autoLabelWidth ? 'auto' : layout.labelWidth+'%')" -->
+    <!-- :label-width="isLabel? '0px': layout.labelWidth+'%'" -->
     <el-form-item
       :label="item.options.hidden||isLabel?'':item.label"
       :required="item.rules?item.rules[0].required:false"
-      :label-width="isLabel? '0px': layout.labelWidth+'%'"
 
+      :label-width="isLabel? '0px': (layout.autoLabelWidth ? 'auto' : layout.labelWidth+'%')"
       :style="item.type==='tMKeditor'?'overflow:hidden':''"
     >
 
@@ -434,13 +435,18 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    dataList: {
+      type: Array,
+      required: true
     }
   },
   data() {
     return {
       eventName: this.item.options.eventName || 'click',
       treeOptions: [],
-      tempItem: []
+      tempItem: [],
+      formOptionsList: this.dataList || []
     }
   },
   computed: {
@@ -471,6 +477,12 @@ export default {
         }
       },
       deep: true
+    },
+    dataList: {
+      handler(newValue, oldValue) {
+        this.formOptionsList = newValue
+      },
+      deep: true
     }
   },
   created() {
@@ -480,10 +492,44 @@ export default {
     dynamicFun(item) {
       if (item.options.dynamicFun && item.options.eventName) {
         // var function_name=new function(arg1,arg2,...,argN,function_body)
-        var val = new Function('item', item.options.dynamicFun)
+        var val = new Function('item', 'dataList', 'that', item.options.dynamicFun)
         // 传参
-        val(item)
+        val(item, this.formOptionsList, this)
       }
+    },
+    // 批量设置某个option的值 that.setOptions(['input_1619670344566'],'defaultValue',777);
+    setOptions(fields, optionName, value) {
+      fields = new Set(fields)
+      // 递归遍历控件树
+      const traverse = array => {
+        array.forEach(element => {
+          if (fields.has(element.model)) {
+            element.options[optionName] = value
+            console.log(value)
+          }
+          if (element.type === 'grid' || element.type === 'tabs') {
+            // 栅格布局
+            element.columns.forEach(item => {
+              traverse(item.list)
+            })
+          } else if (element.type === 'card') {
+            // 卡片布局
+            traverse(element.list)
+          } else if (element.type === 'childTable' || element.type === 'childTablePage') {
+            // 字表布局
+            traverse(element.list)
+          }
+          if (element.type === 'table') {
+            // 表格布局
+            element.trs.forEach(item => {
+              item.tds.forEach(val => {
+                traverse(val.list)
+              })
+            })
+          }
+        })
+      }
+      traverse(this.formOptionsList)
     },
     normalizer(node) {
       if (node.children && !node.children.length) {

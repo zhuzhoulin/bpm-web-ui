@@ -111,9 +111,8 @@ export default {
     }
     }
 </style>
-<style lang="scss" scoped>
+<style lang="scss" >
   .icon-body {
     width: 100%;
-    // padding: 10px;
   }
 </style>

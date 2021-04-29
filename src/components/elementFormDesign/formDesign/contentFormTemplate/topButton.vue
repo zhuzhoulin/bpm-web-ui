@@ -7,8 +7,9 @@
       <el-button type="text" icon="el-icon-view" size="mini" @click="viewFrom">预览</el-button>
     </el-tooltip>
     <el-dialog v-if="formViewVisible" title="预览" :visible.sync="formViewVisible" :top="'10vh'" append-to-body>
+
       <TFormBuild
-        :options="data"
+        :options.sync="data"
         :dynamic-data="dynamicData"
       />
     </el-dialog>
@@ -67,8 +68,10 @@ export default {
         json: `{
                       "config": {
                       "labelPosition": "left",
-                      "labelWidth": 15,
-                       "autoLabelWidth": false,
+                      "labelWidth": "auto",
+                      "autoLabelWidth": true,
+                      "size": "small",
+
                       "customWidth": ""
                       },
                       "list": []

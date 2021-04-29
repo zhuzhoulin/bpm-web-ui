@@ -677,7 +677,7 @@ export default {
         this.$nextTick(() => {
           this.formData = newValue
           const temp = deepClone(newValue)
-          console.log(temp)
+
           if (Array.isArray(temp)) {
             temp.unshift({
               'type': 'input',

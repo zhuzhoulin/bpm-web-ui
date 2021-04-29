@@ -38,7 +38,10 @@ export default {
         config: {
           labelPosition: 'left',
           labelWidth: 15,
-          autoLabelWidth: false // 子表单有问题
+          customWidth: '',
+          autoLabelWidth: false, // 子表单有问题
+          inline: false,
+          size: 'default'
         },
         list: []
       }

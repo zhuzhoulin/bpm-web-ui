@@ -537,6 +537,7 @@
       > -->
       <!-- :label-width="isLabel? '0px': (layout.autoLabelWidth ? 'auto' : layout.labelWidth+'%')" -->
       <!-- :label-width="isLabel? '0px': layout.labelWidth+'%'" -->
+
       <el-form-item
         :prop="item.model"
         :label="item.options.hidden||isLabel?'':item.label"
@@ -979,12 +980,17 @@ export default {
     layout: {
       type: Object,
       required: true
+    },
+    dataList: {
+      type: Array,
+      required: true
     }
   },
   data() {
     return {
       itemKey: Math.random(),
-      eventName: this.item.options.eventName || 'click'
+      eventName: this.item.options.eventName || 'click',
+      formOptionsList: this.dataList || []
     }
   },
   computed: {
@@ -999,16 +1005,59 @@ export default {
         this.eventName = newValue.options.eventName || 'click'
       },
       deep: true
+    },
+    dataList: {
+      handler(newValue, oldValue) {
+        this.formOptionsList = newValue
+      },
+      deep: true
     }
   },
   methods: {
     dynamicFun(item) {
       if (item.options.dynamicFun && item.options.eventName) {
         // var function_name=new function(arg1,arg2,...,argN,function_body)
-        var val = new Function('item', item.options.dynamicFun)
+        var val = new Function('item', 'dataList', 'that', item.options.dynamicFun)
         // 传参
-        val(item)
+        val(item, this.formOptionsList, this)
       }
+    },
+    // 批量设置某个option的值 that.setOptions(['input_1619670344566'],'defaultValue',777);
+    setOptions(fields, optionName, value) {
+      fields = new Set(fields)
+      // 递归遍历控件树
+      const traverse = array => {
+        array.forEach(element => {
+          console.log(element)
+          if (fields.has(element.model)) {
+            element.options[optionName] = value
+            console.log(value)
+          }
+          if (element.type === 'grid' || element.type === 'tabs') {
+            // 栅格布局
+            element.columns.forEach(item => {
+              traverse(item.list)
+            })
+          } else if (element.type === 'card') {
+            // 卡片布局
+            traverse(element.list)
+          } else if (element.type === 'childTable' || element.type === 'childTablePage') {
+            // 字表布局
+            traverse(element.list)
+          }
+          if (element.type === 'table') {
+            // 表格布局
+            element.trs.forEach(item => {
+              item.tds.forEach(val => {
+                traverse(val.list)
+              })
+            })
+          }
+        })
+      }
+      traverse(this.formOptionsList)
+
+      this.$emit('formDataMap')
     },
     handleFormButton(type) {
       this.$emit('clickFormButton', type)

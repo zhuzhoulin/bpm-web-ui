@@ -1,7 +1,13 @@
 <template>
+
   <el-form
+
     :label-position="data.config.labelPosition"
+    :label-width="data.config.autoLabelWidth ? 'auto': data.config.labelWidth+'%'"
+    :inline="data.config.inline"
+    :size="data.config.size"
   >
+
     <draggable
       v-model="data.list"
       tag="div"
@@ -17,12 +23,14 @@
       @start="start"
     >
       <transition-group tag="div" name="list" class="list-main">
+
         <TFormTemplate
           v-for="(item,i) in data.list"
           :key="item.key"
           :layout="data.config"
           :item="item"
           :i="i"
+          :data-list="data.list"
           :select-type="selectType"
           :select-item.sync="selectItem"
           @handleStart="handleStart"
@@ -78,6 +86,7 @@ export default {
 
   },
   methods: {
+
     start(e) {
       this.$emit('startChoose', e.oldIndex)
     },
