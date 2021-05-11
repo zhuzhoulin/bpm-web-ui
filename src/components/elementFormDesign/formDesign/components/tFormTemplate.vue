@@ -52,10 +52,10 @@
                 >
                   <transition-group tag="div" name="list" class="table-item">
                     <TFormTemplate
-                      v-for="(r, i) in td.list"
+                      v-for="(r, j) in td.list"
                       :key="r.key"
                       :item="r"
-                      :i="i"
+                      :i="j"
                       :data-list="data"
                       :layout="layout"
                       :select-item="selectItem"
@@ -74,54 +74,57 @@
       </template>
       <!-- 标签页布局 -->
       <template v-if="item.type === 'tabs'">
-        <el-tabs
-          v-if="item.type === 'tabs'"
-          v-model="item.options.activeName"
-          :type="item.options.type"
-          :tab-position="item.options.tabPosition"
-        >
-          <el-tab-pane
-            v-for="(tabItem) in item.columns"
-            :key="tabItem.value"
-            :label="tabItem.label"
-            :name="tabItem.value"
+        <div class="tab-box">
+
+          <el-tabs
+            v-if="item.type === 'tabs'"
+            v-model="item.options.activeName"
+            :type="item.options.type"
+            :tab-position="item.options.tabPosition"
           >
-            <el-row
-              :gutter="item.options.gutter"
+            <el-tab-pane
+              v-for="(tabItem) in item.columns"
+              :key="tabItem.value"
+              :label="tabItem.label"
+              :name="tabItem.value"
             >
-              <draggable
-                v-model="tabItem.list"
-                tag="div"
-                class="grid-box-dra"
-                v-bind="{
-                  group: 'form-draggable',
-                  animation: 180,
-                  handle:'.dar-box',
-                  ghostClass: 'moving',
-                }"
-                @add="addItem($event,tabItem.list)"
-                @start="start($event,tabItem.list)"
+              <el-row
+                :gutter="item.options.gutter"
               >
-                <transition-group tag="div" name="list" class="grid-item">
-                  <TFormTemplate
-                    v-for="(r, i) in tabItem.list"
-                    :key="r.key"
-                    :item="r"
-                    :i="i"
-                    :data-list="data"
-                    :layout="layout"
-                    :select-item="selectItem"
-                    :select-type="selectType"
-                    @onClick="onClick"
-                    @deleteItem="deleteItem"
-                    @selectChange="selectChange"
-                    @handleStart="start"
-                  />
-                </transition-group>
-              </draggable>
-            </el-row>
-          </el-tab-pane>
-        </el-tabs>
+                <draggable
+                  v-model="tabItem.list"
+                  tag="div"
+                  class="tab-box-dra"
+                  v-bind="{
+                    group: 'form-draggable',
+                    animation: 180,
+                    handle:'.dar-box',
+                    ghostClass: 'moving',
+                  }"
+                  @add="addItem($event,tabItem.list)"
+                  @start="start($event,tabItem.list)"
+                >
+                  <transition-group tag="div" name="list" class="tab-item">
+                    <TFormTemplate
+                      v-for="(r, j) in tabItem.list"
+                      :key="r.key"
+                      :item="r"
+                      :i="j"
+                      :data-list="data"
+                      :layout="layout"
+                      :select-item="selectItem"
+                      :select-type="selectType"
+                      @onClick="onClick"
+                      @deleteItem="deleteItem"
+                      @selectChange="selectChange"
+                      @handleStart="start"
+                    />
+                  </transition-group>
+                </draggable>
+              </el-row>
+            </el-tab-pane>
+          </el-tabs>
+        </div>
       </template>
 
       <!--      格栅布局-->
@@ -131,8 +134,8 @@
             :gutter="item.options.gutter"
           >
             <el-col
-              v-for="(column, i) in item.columns"
-              :key="i"
+              v-for="(column, j) in item.columns"
+              :key="j"
               :span="column.span"
             >
               <draggable
@@ -150,10 +153,10 @@
               >
                 <transition-group tag="div" name="list" class="grid-item">
                   <TFormTemplate
-                    v-for="(r, i) in column.list"
+                    v-for="(r, k) in column.list"
                     :key="r.key"
                     :item="r"
-                    :i="i"
+                    :i="k"
                     :data-list="data"
                     :layout="layout"
                     :select-item="selectItem"
@@ -193,12 +196,11 @@
               >
                 <transition-group tag="div" name="list" class="card-item">
                   <TFormTemplate
-                    v-for="(r, i) in item.list"
+                    v-for="(r, j) in item.list"
                     :key="r.key"
                     :item="r"
-                    :i="i"
+                    :i="j"
                     :data-list="data"
-
                     :layout="layout"
                     :select-item="selectItem"
                     :select-type="selectType"
@@ -235,10 +237,10 @@
             >
               <transition-group tag="div" name="list" class="childTable-main">
                 <TFormTemplate
-                  v-for="(r, i) in item.list"
+                  v-for="(r, j) in item.list"
                   :key="r.key"
                   :item="r"
-                  :i="i"
+                  :i="j"
                   :data-list="data"
                   :layout="layout"
                   :select-type="selectType"
@@ -350,7 +352,8 @@ export default {
     },
     dataList: {
       type: Array,
-      required: true
+      required: false,
+      default: () => []
     },
     i: {
       type: Number,

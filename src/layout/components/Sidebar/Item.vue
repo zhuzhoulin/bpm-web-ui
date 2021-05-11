@@ -12,16 +12,28 @@ export default {
       default: ''
     }
   },
-  render(h, context) {
+  render(createElement, context) {
     const { icon, title } = context.props
     const vnodes = []
 
     if (icon) {
-      vnodes.push(<svg-icon icon-class={icon}/>)
+      const elHtml = createElement('svg-icon', {
+        attrs: {
+          'icon-class': icon
+        }
+      })
+
+      vnodes.push(elHtml)
     }
 
     if (title) {
-      vnodes.push(<span slot='title'>{(title)}</span>)
+      const elHtml = createElement('span', {
+        attrs: {
+          slot: title,
+          class: 'system-menu-title'
+        }
+      }, title)
+      vnodes.push(elHtml)
     }
     return vnodes
   }

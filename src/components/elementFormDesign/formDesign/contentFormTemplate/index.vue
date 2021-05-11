@@ -1,7 +1,6 @@
 <template>
 
   <el-form
-
     :label-position="data.config.labelPosition"
     :label-width="data.config.autoLabelWidth ? 'auto': data.config.labelWidth+'%'"
     :inline="data.config.inline"

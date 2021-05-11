@@ -19,14 +19,14 @@
       class="T-form-main"
     >
       <TopButton
-        :data="data"
-        :dynamic-data="dynamicData"
+        :data.sync="data"
+        :dynamic-data.sync="dynamicData"
         @importJson="importJson"
         @save="save"
       />
       <div class="control-center-wrap">
         <ContentFormTemplate
-          :data="data"
+          :data.sync="data"
           :select-item="selectItem"
           :select-type="selectType"
           @selectItemChange="selectItemChange"
@@ -76,18 +76,6 @@ export default {
     FormControlConfig,
     TopButton
   },
-  // mounted(){
-  //     //这里的代码为富文本编辑器服务,因为布局关系会导致富文本编辑器被拖入的时候造成页面被撑开,这里做监听
-  //     this.$refs.contentWrap.style.width = this.$refs.allWrap.scrollWidth-640+"px";
-  //     addEventListener('resize',()=>{
-  //         this.$refs.contentWrap.style.width = this.$refs.allWrap.scrollWidth-640+"px"
-  //     })
-  // },
-  // destroyed(){
-  //     removeEventListener('resize',()=>{
-  //         this.$refs.contentWrap.style.width = this.$refs.allWrap.scrollWidth-640+"px"
-  //     })
-  // },
   props: {
     defaultValue: {
       type: Object,
@@ -255,7 +243,9 @@ export default {
       this.data.list = []
     },
     setDesignData(data) {
+      console.log('setDesignData  1')
       this.data = data
+      console.log('setDesignData  2')
     },
     save() {
       // 保存按钮,传出formDesign中的data克隆副本

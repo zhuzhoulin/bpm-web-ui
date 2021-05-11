@@ -29,14 +29,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/zhuzl002/bpm-web.git"
+    "url": "https://gitee.com/zhuzl002/bpm-web-ui.git"
   },
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
+    "@babel/polyfill": "^7.12.1",
     "@riophae/vue-treeselect": "^0.4.0",
     "axios": "0.18.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
-    "babel-polyfill": "^6.26.0",
     "bpmn-auto-layout": "^0.1.0",
     "bpmn-js": "^6.1.2",
     "bpmn-js-token-simulation": "^0.10.0",
@@ -107,6 +108,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.14.0",
     "@babel/register": "7.0.0",
     "@dagrejs/graphlib": "^2.1.4",
     "@vue/cli-plugin-babel": "3.6.0",

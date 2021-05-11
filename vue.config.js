@@ -34,9 +34,16 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: config.devServer,
+  // 默认情况下 babel-loader 会忽略所有 node_modules 中的文件。
+
+  // 如果你想要通过 Babel 显式转译一个依赖，可以在这个选项中列出来
+  // transpileDependencies: ['node_modules/webpack-dev-server/client'],
+
   configureWebpack: config => {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
+    config.entry.app = ['@babel/polyfill', './src/main.js']
+
     config.name = name
     config.resolve.alias['@'] = resolve('src')
     config.plugins.push(

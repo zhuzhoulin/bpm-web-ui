@@ -15,16 +15,16 @@
               :rowspan="td.rowspan"
             >
               <FinalForm
-                v-for="(item, i) in td.list"
+                v-for="(temp, i) in td.list"
                 :key="i"
-                :item="item"
+                :item="temp"
                 :dynamic-data="dynamicData"
                 :layout="layout"
                 :form-data="formData"
                 :child-table-columns="childTableColumns"
                 @clickFormButton="handleFormButton"
-                @onSuccess="(response, file, fileList)=>{const model= item.model; $emit('onSuccess',response, file, fileList, model)}"
-                @beforeUpload="(file)=>{const model= item.model;$emit('beforeUpload', file, model)}"
+                @onSuccess="(response, file, fileList)=>{const model= temp.model; $emit('onSuccess',response, file, fileList, model)}"
+                @beforeUpload="(file)=>{const model= temp.model;$emit('beforeUpload', file, model)}"
               />
             </td>
           </tr>
@@ -35,6 +35,7 @@
     <!--    格栅布局-->
     <template v-if="item.type ==='grid'">
       <div class="form-build-grid">
+
         <el-row
           :gutter="item.options.gutter"
         >
@@ -43,18 +44,19 @@
             :key="i"
             :span="column.span"
           >
+
             <FinalForm
-              v-for="(item, i) in column.list"
-              :key="i"
-              :item="item"
+              v-for="(temp, j) in column.list"
+              :key="j"
+              :item="temp"
               :dynamic-data="dynamicData"
               :layout="layout"
               :disabled="disabled"
               :form-data="formData"
               :child-table-columns="childTableColumns"
               @clickFormButton="handleFormButton"
-              @onSuccess="(response, file, fileList)=>{const model= item.model; $emit('onSuccess',response, file, fileList, model)}"
-              @beforeUpload="(file)=>{const model= item.model;$emit('beforeUpload', file, model)}"
+              @onSuccess="(response, file, fileList)=>{const model= temp.model; $emit('onSuccess',response, file, fileList, model)}"
+              @beforeUpload="(file)=>{const model= temp.model;$emit('beforeUpload', file, model)}"
             />
           </el-col>
         </el-row>
@@ -63,39 +65,42 @@
     <!--    格栅布局结束-->
     <!-- 标签页布局 -->
     <template v-if="item.type === 'tabs'">
-      <el-tabs
-        v-if="item.type === 'tabs'"
-        v-model="item.options.activeName"
-        :type="item.options.type"
-        :tab-position="item.options.tabPosition"
-      >
-        <el-tab-pane
-          v-for="(tabItem) in item.columns"
-          :key="tabItem.value"
-          :label="tabItem.label"
-          :name="tabItem.value"
+      <div class="form-build-grid">
+
+        <el-tabs
+          v-if="item.type === 'tabs'"
+          v-model="item.options.activeName"
+          :type="item.options.type"
+          :tab-position="item.options.tabPosition"
         >
-          <el-row
-            :gutter="item.options.gutter"
+          <el-tab-pane
+            v-for="(tabItem) in item.columns"
+            :key="tabItem.value"
+            :label="tabItem.label"
+            :name="tabItem.value"
           >
+            <el-row
+              :gutter="item.options.gutter"
+            >
 
-            <FinalForm
-              v-for="(temp, i) in tabItem.list"
-              :key="i"
-              :item="temp"
-              :dynamic-data="dynamicData"
-              :layout="layout"
-              :disabled="disabled"
-              :form-data="formData"
-              :child-table-columns="childTableColumns"
-              @clickFormButton="handleFormButton"
-              @onSuccess="(response, file, fileList)=>{const model= item.model; $emit('onSuccess',response, file, fileList, model)}"
-              @beforeUpload="(file)=>{const model= item.model;$emit('beforeUpload', file, model)}"
-            />
+              <FinalForm
+                v-for="(temp, i) in tabItem.list"
+                :key="i"
+                :item="temp"
+                :dynamic-data="dynamicData"
+                :layout="layout"
+                :disabled="disabled"
+                :form-data="formData"
+                :child-table-columns="childTableColumns"
+                @clickFormButton="handleFormButton"
+                @onSuccess="(response, file, fileList)=>{const model= temp.model; $emit('onSuccess',response, file, fileList, model)}"
+                @beforeUpload="(file)=>{const model= temp.model;$emit('beforeUpload', file, model)}"
+              />
 
-          </el-row>
-        </el-tab-pane>
-      </el-tabs>
+            </el-row>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
     </template>
 
     <!--    子表-->
@@ -983,7 +988,8 @@ export default {
     },
     dataList: {
       type: Array,
-      required: true
+      required: false,
+      default: () => []
     }
   },
   data() {
@@ -1028,7 +1034,6 @@ export default {
       // 递归遍历控件树
       const traverse = array => {
         array.forEach(element => {
-          console.log(element)
           if (fields.has(element.model)) {
             element.options[optionName] = value
             console.log(value)
