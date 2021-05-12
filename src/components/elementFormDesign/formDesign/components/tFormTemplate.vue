@@ -88,9 +88,10 @@
               :label="tabItem.label"
               :name="tabItem.value"
             >
-              <el-row
+              <!-- <el-row
                 :gutter="item.options.gutter"
-              >
+              > -->
+              <el-row>
                 <draggable
                   v-model="tabItem.list"
                   tag="div"

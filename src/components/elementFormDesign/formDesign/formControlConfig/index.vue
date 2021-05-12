@@ -80,8 +80,8 @@
         v-if="config.type==='uploadFile'||config.type==='uploadImg'"
         :options="config.options"
       />
-      <el-divider v-if="config.options.hasOwnProperty('gutter')" />
-      <el-form-item v-if="config.options.hasOwnProperty('gutter')" label="格栅间距">
+      <el-divider v-if="config.options.hasOwnProperty('gutter') && config.type === 'grid'" />
+      <el-form-item v-if="config.options.hasOwnProperty('gutter') && config.type === 'grid'" label="格栅间距">
         <el-input-number
           v-model="config.options.gutter"
           :min="0"

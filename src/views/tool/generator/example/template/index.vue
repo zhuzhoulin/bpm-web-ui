@@ -535,7 +535,7 @@ export default {
 }
 </script>
 
-<style  rel="stylesheet/scss" lang="scss">
+<style  rel="stylesheet/scss" lang="scss" scoped>
 
     .page-footer{
         margin-top: 20px;
