@@ -116,9 +116,10 @@
         <el-form v-if="showAction">
           <el-form-item>
             <!-- <el-button v-if="start" @click="getData">获取数据</el-button> -->
-            <el-button v-if="start" plain @click="saveDraft">{{ actionTypeMap['draft'] }}</el-button>
-            <el-button v-if="start" plain @click="clickFormButton('clear')">{{ $t('action.reset') }}</el-button>
-            <el-button v-if="start || nodeActionContainsStart || nodeActionContainsPass" plain @click="clickFormButton('submit')">{{ actionTypeMap['pass'] }}</el-button>
+            <el-button v-if="start || nodeActionContainsStart" plain @click="saveDraft">{{ actionTypeMap['draft'] }}</el-button>
+            <el-button v-if="start || nodeActionContainsStart" plain @click="clickFormButton('clear')">{{ $t('action.reset') }}</el-button>
+            <el-button v-if="start || nodeActionContainsStart" plain @click="clickFormButton('submit')">{{ $t('action.submit') }}</el-button>
+            <el-button v-if="nodeActionContainsPass" plain @click="clickFormButton('submit')">{{ actionTypeMap['pass'] }}</el-button>
             <el-button v-if="nodeActionContainsReject" plain @click="approveReject">{{ actionTypeMap['reject'] }}</el-button>
             <el-button v-if="nodeActionContainsCounterSign" plain @click="showcounterSign">{{ actionTypeMap['counterSign'] }}</el-button>
             <el-button v-if="nodeActionContainsTempNode" plain @click="approveAddTempNode">{{ actionTypeMap['addTempNode'] }}</el-button>

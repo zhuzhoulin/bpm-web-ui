@@ -58,8 +58,6 @@ export default {
     }
   },
   mounted() {
-    console.log('design ---mounted --- ')
-
     this.setDesignData(this.formInfo)
   },
   created() {
