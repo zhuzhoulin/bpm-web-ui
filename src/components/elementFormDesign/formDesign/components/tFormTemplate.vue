@@ -74,57 +74,60 @@
       </template>
       <!-- 标签页布局 -->
       <template v-if="item.type === 'tabs'">
-        <div class="tab-box">
 
-          <el-tabs
-            v-if="item.type === 'tabs'"
-            v-model="item.options.activeName"
-            :type="item.options.type"
-            :tab-position="item.options.tabPosition"
-          >
-            <el-tab-pane
-              v-for="(tabItem) in item.columns"
-              :key="tabItem.value"
-              :label="tabItem.label"
-              :name="tabItem.value"
-            >
-              <!-- <el-row
-                :gutter="item.options.gutter"
-              > -->
-              <el-row>
-                <draggable
-                  v-model="tabItem.list"
-                  tag="div"
-                  class="tab-box-dra"
-                  v-bind="{
-                    group: 'form-draggable',
-                    animation: 180,
-                    handle:'.dar-box',
-                    ghostClass: 'moving',
-                  }"
-                  @add="addItem($event,tabItem.list)"
-                  @start="start($event,tabItem.list)"
+        <div class="tab-box">
+          <el-row>
+            <el-col :span="24">
+              <el-tabs
+                v-if="item.type === 'tabs'"
+                v-model="item.options.activeName"
+                :type="item.options.type"
+                :tab-position="item.options.tabPosition"
+              >
+                <el-tab-pane
+                  v-for="(tabItem) in item.columns"
+                  :key="tabItem.value"
+                  :label="tabItem.label"
+                  :name="tabItem.value"
                 >
-                  <transition-group tag="div" name="list" class="tab-item">
-                    <TFormTemplate
-                      v-for="(r, j) in tabItem.list"
-                      :key="r.key"
-                      :item="r"
-                      :i="j"
-                      :data-list="data"
-                      :layout="layout"
-                      :select-item="selectItem"
-                      :select-type="selectType"
-                      @onClick="onClick"
-                      @deleteItem="deleteItem"
-                      @selectChange="selectChange"
-                      @handleStart="start"
-                    />
-                  </transition-group>
-                </draggable>
-              </el-row>
-            </el-tab-pane>
-          </el-tabs>
+
+                  <el-row>
+                    <draggable
+                      v-model="tabItem.list"
+                      tag="div"
+                      class="tab-box-dra"
+                      v-bind="{
+                        group: 'form-draggable',
+                        animation: 180,
+                        handle:'.dar-box',
+                        ghostClass: 'moving',
+                      }"
+                      @add="addItem($event,tabItem.list)"
+                      @start="start($event,tabItem.list)"
+                    >
+
+                      <transition-group tag="div" name="list" class="tab-item">
+                        <TFormTemplate
+                          v-for="(temp,m) in tabItem.list"
+                          :key="temp.key"
+                          :item="temp"
+                          :i="m"
+                          :data-list="data"
+                          :layout="layout"
+                          :select-item="selectItem"
+                          :select-type="selectType"
+                          @onClick="onClick"
+                          @deleteItem="deleteItem"
+                          @selectChange="selectChange"
+                          @handleStart="start"
+                        />
+                      </transition-group>
+                    </draggable>
+                  </el-row>
+                </el-tab-pane>
+              </el-tabs>
+            </el-col>
+          </el-row>
         </div>
       </template>
 
@@ -279,10 +282,10 @@
             >
               <transition-group tag="div" name="list" class="childTable-main">
                 <TFormTemplate
-                  v-for="(r, i) in item.list"
+                  v-for="(r, j) in item.list"
                   :key="r.key"
                   :item="r"
-                  :i="i"
+                  :i="j"
                   :data-list="data"
                   :layout="layout"
                   :select-type="selectType"
