@@ -1,4 +1,4 @@
-import '@babel/polyfill'
+// import '@babel/polyfill'
 
 import Vue from 'vue'
 
@@ -14,7 +14,7 @@ import '@/styles/index.scss' // global css
 import App from './App'
 import store from './store'
 import router from './router'
-import 'lib-flexible/flexible.js'
+// import 'lib-flexible/flexible.js'
 
 import '@/icons' // icon
 import '@/permission' // permission control

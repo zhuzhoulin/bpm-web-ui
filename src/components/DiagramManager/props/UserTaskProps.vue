@@ -643,7 +643,11 @@ export default {
           if (this.getPropertieByName(customProperties, 'actionList')) {
             var actionStr = this.getPropertieByName(customProperties, 'actionList') || ''
             console.log('action,:' + actionStr)
-            this.actionList = actionStr.split(',')
+            if (actionStr instanceof Array) {
+              this.actionList = actionStr
+            } else {
+              this.actionList = actionStr.split(',')
+            }
           } else {
             this.createOrUpdateCustomProperties('actionList', this.actionList.join(',') || '')
           }
