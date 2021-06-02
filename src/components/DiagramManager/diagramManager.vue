@@ -93,7 +93,7 @@
           label="BPMNXML"
           name="fourth"
         >
-          <bpmnXml v-if="showBpmn" ref="bpmnXml" :process-diagram-xml.sync="processDiagramXml" /></el-tab-pane>
+          <bpmnXml v-if="showBpmn" ref="bpmnXml" :process-diagram-xml.sync="processDiagramXml" :process-engine-name="processEngineName" /></el-tab-pane>
 
       </el-tabs>
 
@@ -156,6 +156,7 @@ export default {
   },
   data() {
     return {
+      processEngineName: 'flowable',
       bpmnModeler: null,
       container: null,
       canvas: null,
@@ -284,7 +285,7 @@ export default {
         if (err) {
           this.$message.error(err)
         } else {
-          this.processDiagramXml = xml.replace(/ns0:/g, 'flowable:')
+          this.processDiagramXml = xml.replace(/ns0:/g, this.processEngineName + ':')
         }
       })
     }
@@ -330,7 +331,6 @@ export default {
     // border: solid 1px #666;
  }
  .designRight{
-    min-height: 600px;
     position: relative;
     border-top: solid 1px #cccccc;
     border-bottom: solid 1px #cccccc;

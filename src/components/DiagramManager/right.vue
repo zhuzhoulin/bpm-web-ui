@@ -145,6 +145,9 @@ import SequenceFlowProps from './props/SequenceFlowProps.vue'
 import CallActivityProps from './props/CallActivityProps.vue'
 import ScriptTaskProps from './props/ScriptTaskProps.vue'
 import TemplateProps from './props/TemplateProps.vue'
+import SubProcessProps from './props/SubProcessProps.vue'
+
+import MultiInstanceLoopCharacteristics from './components/multi-instance-loop-characteristics'
 export default {
   name: 'DesignRight',
   components: {
@@ -160,7 +163,9 @@ export default {
     SequenceFlowProps,
     CallActivityProps,
     ScriptTaskProps,
-    TemplateProps
+    TemplateProps,
+    SubProcessProps,
+    MultiInstanceLoopCharacteristics
   },
   provide: function() {
     return {

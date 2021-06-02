@@ -15,8 +15,8 @@ const config = {
     // 设置代理
     proxy: {
       '/api/lowCode': {
-        // target: 'http://120.77.218.141:9993/',
-        target: 'http://10.1.13.45:9993/',
+        target: 'http://120.77.218.141:9993/',
+        //  target: 'http://10.1.13.45:9993/',
         changeOrigin: true
       },
       '/api/code': {

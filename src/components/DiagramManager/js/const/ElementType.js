@@ -21,6 +21,7 @@ const ELEMETN_TYPE = {
 
   // 20210428 新增
   scriptTask: BPMN_PREFIX + 'ScriptTask',
+  subProcess: BPMN_PREFIX + 'SubProcess',
 
   // 以下为activti的拓展元素
   listener: CUSTOM_PROFIX + 'Listener',

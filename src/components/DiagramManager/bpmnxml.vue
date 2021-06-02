@@ -32,6 +32,11 @@ export default {
     processDiagramXml: {
       type: String,
       required: true
+    },
+    processEngineName: {
+      type: String,
+      required: false,
+      default: 'flowable'
     }
   },
   data() {
@@ -55,13 +60,13 @@ export default {
   watch: {
     processDiagramXml: {
       handler(newValue, oldValue) {
-        this.diagramXml = vkbeautify.xml(newValue.replace(/ns0:/g, 'flowable:'))
+        this.diagramXml = vkbeautify.xml(newValue.replace(/ns0:/g, this.processEngineName + ':'))
       },
       deep: true
     }
   },
   mounted() {
-    this.diagramXml = vkbeautify.xml(this.processDiagramXml.replace(/ns0:/g, 'flowable:'))
+    this.diagramXml = vkbeautify.xml(this.processDiagramXml.replace(/ns0:/g, this.processEngineName + ':'))
   },
   methods: {
     codemirrorChange() {
